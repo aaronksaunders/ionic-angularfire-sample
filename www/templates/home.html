@@ -1,6 +1,6 @@
 <ion-view title="Angular Fire Test App" hasHeader>
     <ion-nav-buttons side="right">
-        <button class="button"  ng-click="doLogoutAction()" >
+        <button class="button" ng-click="doLogoutAction()">
             Logout
         </button>
     </ion-nav-buttons>
@@ -20,6 +20,14 @@
             <div class="item item-divider">{{textItem.title}}</div>
             <div class="item item-text-wrap">
                 {{textItem.description}} - {{ textItem.timestamp | date }}
+            </div>
+        </div>
+        <div class="card list" ng-repeat="u in users">
+            <div class="item item-divider">{{u.displayName}}</div>
+            <div class="item item-text-wrap">
+                <p ng-repeat="m in u.msgs">
+                    {{m.text}} {{m.date | date}}
+                </p>
             </div>
         </div>
     </ion-content>

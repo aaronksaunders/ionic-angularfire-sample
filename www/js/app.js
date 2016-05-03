@@ -6,8 +6,8 @@
 angular.module('ionicFBStarter', ['ionic', 'starter.controllers', 'firebase'])
   //
   // SET THE CONSTANTS FOR THE REFS FOR FIREBASE/ANGULARFIRE
-  .value("AUTHREF", new Firebase("https://[YOUR-STUFF].firebaseio.com/"))
-  .value("TEXT_ITEMS_REF", new Firebase("https://[YOUR-STUFF].firebaseio.com/textItems"))
+  .value("AUTHREF", new Firebase("https://clearlyinnovative-firebasestarterapp.firebaseio.com/"))
+  .value("TEXT_ITEMS_REF", new Firebase("https://clearlyinnovative-firebasestarterapp.firebaseio.com/textItems"))
   //
   // DEFAULT RUN BLOCK
   .run(function ($ionicPlatform, $rootScope, $state) {

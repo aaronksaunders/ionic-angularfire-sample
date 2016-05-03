@@ -32,6 +32,34 @@ angular.module('starter.controllers', [])
             $scope.textItems = $firebaseArray(TEXT_ITEMS_REF);
 
             /**
+             *  example of how to do nested queries with angularFire
+             */
+            $scope.getUsersAndMessages = function () {
+
+                var userRef = new Firebase("https://clearlyinnovative-firebasestarterapp.firebaseio.com/users");
+
+                // get all the users...
+                $firebaseArray(userRef).$loaded()
+                    .then(function (_allUsers) {
+
+                        // now loop thru and get the messages
+                        $scope.users = _allUsers.map(function (_user) {
+                            var msgRef = new Firebase("https://clearlyinnovative-firebasestarterapp.firebaseio.com/userObjects/public-messages/" + _user.$id);
+
+                            // get the user's messages
+                            _user.msgs = $firebaseArray(msgRef)
+
+                            // return the user object
+                            return _user;
+                        })
+                        console.log($scope.users)
+                    })
+                    .catch(function (error) {
+                        console.log("Error:", error);
+                    });
+            }
+
+            /**
              * 
              */
             $scope.doLogoutAction = function () {
