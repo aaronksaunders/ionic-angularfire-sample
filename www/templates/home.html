@@ -1,0 +1,26 @@
+<ion-view title="Angular Fire Test App" hasHeader>
+    <ion-nav-buttons side="right">
+        <button class="button"  ng-click="doLogoutAction()" >
+            Logout
+        </button>
+    </ion-nav-buttons>
+    <ion-content has-header="true" padding="true">
+        <ion-item>
+            <div class="row">
+                <div class="col col-80" style="margin-top:8px">
+                    <div ng-if="auth">You are logged in as {{authInfo.email}}</div>
+                    <div ng-if="!(auth)">Please log in</div>
+                </div>
+                <div class="col col-20">
+                    <a class="button" (click)="addNewItemClicked()">Add Item</a>
+                </div>
+            </div>
+        </ion-item>
+        <div class="card list" ng-repeat="textItem in textItems">
+            <div class="item item-divider">{{textItem.title}}</div>
+            <div class="item item-text-wrap">
+                {{textItem.description}} - {{ textItem.timestamp | date }}
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
