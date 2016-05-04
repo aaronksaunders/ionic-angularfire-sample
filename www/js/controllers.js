@@ -25,8 +25,8 @@ angular.module('starter.controllers', [])
     // A simple controller that fetches a list of data from a service
     //
     .controller('HomeCtrl', [
-        '$scope', '$firebaseArray', 'user', '$firebaseAuth', '$state', 'AUTHREF', 'TEXT_ITEMS_REF',
-        function HomeCtrl($scope, $firebaseArray, user, $firebaseAuth, $state, AUTHREF, TEXT_ITEMS_REF) {
+        '$scope', '$firebaseArray', 'user', '$firebaseAuth', '$state', 'AUTHREF', 'TEXT_ITEMS_REF', '$ionicModal',
+        function HomeCtrl($scope, $firebaseArray, user, $firebaseAuth, $state, AUTHREF, TEXT_ITEMS_REF, $ionicModal) {
             console.log("Home Controller", user);
 
             $scope.textItems = $firebaseArray(TEXT_ITEMS_REF);
@@ -36,7 +36,7 @@ angular.module('starter.controllers', [])
              */
             $scope.getUsersAndMessages = function () {
 
-                var userRef = new Firebase("https://clearlyinnovative-firebasestarterapp.firebaseio.com/users");
+                var userRef = new Firebase("https://[YOUR-STUFF].firebaseio.com/users");
 
                 // get all the users...
                 $firebaseArray(userRef).$loaded()
@@ -44,7 +44,7 @@ angular.module('starter.controllers', [])
 
                         // now loop thru and get the messages
                         $scope.users = _allUsers.map(function (_user) {
-                            var msgRef = new Firebase("https://clearlyinnovative-firebasestarterapp.firebaseio.com/userObjects/public-messages/" + _user.$id);
+                            var msgRef = new Firebase("https://[YOUR-STUFF].firebaseio.com/userObjects/public-messages/" + _user.$id);
 
                             // get the user's messages
                             _user.msgs = $firebaseArray(msgRef)
@@ -59,6 +59,38 @@ angular.module('starter.controllers', [])
                     });
             }
 
+            /**
+             * 
+             */
+            $scope.addNewMessage = function (_messageData) {
+
+                // Load the modal from the given template URL
+                $ionicModal.fromTemplateUrl('../templates/newItemModal.html', {
+                    scope: $scope,
+                    animation: 'slide-in-up'
+                }).then(function (modal) {
+                    $scope.modal = modal;
+                    $scope.modal.show();
+                });
+                // Cleanup the modal when we're done with it!
+                $scope.$on('$destroy', function () {
+                    $scope.modal.remove();
+                });
+            }
+            $scope.saveNewMessage = function saveNewMessage(_messageData) {
+                _messageData['timestamp'] = (new Date()).getTime()
+                _messageData['user'] = user.password.email
+
+                $firebaseArray(TEXT_ITEMS_REF).$add(_messageData)
+                    .then(function (ref) {
+                        var id = ref.key();
+                        console.log("added record with id " + id);
+                        $scope.modal.hide();
+                    })
+                    .catch(function (error) {
+                        alert("Error:", error);
+                    });
+            }
             /**
              * 
              */
