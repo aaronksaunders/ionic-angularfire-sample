@@ -1,5 +1,4 @@
 # ionic-angularfire-sample
---
 ####Same as the [Ionic2 AngularFire2](http://www.clearlyinnovative.com/integrating-firebase-with-angularfire2-into-angularjs-ionic2) example, but in Ionic1...
 --
 
