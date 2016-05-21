@@ -38,6 +38,7 @@ angular.module('ionicFBStarter', ['ionic', 'starter.controllers', 'firebase'])
           $state.go('login', {});
         }
       });
+      
   })
   //
   // CONFIGURATION BLOCK, SPECIFICALLY ROUTING
