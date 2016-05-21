@@ -2,6 +2,10 @@
 ####Same as the [Ionic2 AngularFire2](http://www.clearlyinnovative.com/integrating-firebase-with-angularfire2-into-angularjs-ionic2) example, but in Ionic1...
 --
 
+Configure email authentication in your firebase console
+
+![https://github.com/aaronksaunders/ionic-angularfire-sample/blob/master/Screenshot%202016-05-21%2016.37.56.png](https://github.com/aaronksaunders/ionic-angularfire-sample/blob/master/Screenshot%202016-05-21%2016.37.56.png)
+--
 In `app.js` configure application with your firebase information
 ```Javascript
   //
