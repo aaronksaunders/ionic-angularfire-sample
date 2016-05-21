@@ -1,12 +1,12 @@
 # ionic-angularfire-sample
 ####Same as the [Ionic2 AngularFire2](http://www.clearlyinnovative.com/integrating-firebase-with-angularfire2-into-angularjs-ionic2) example, but in Ionic1...
--
-Please note that AngularFire has not been updated yet to support the latest release of Firebase, but you can migrate your apps and they should still work
---
+---
+#####Please note that AngularFire has not been updated yet to support the latest release of Firebase, but you can migrate your apps and they should still work
+---
 Configure email authentication in your firebase console
 
 ![https://github.com/aaronksaunders/ionic-angularfire-sample/blob/master/Screenshot%202016-05-21%2016.37.56.png](https://github.com/aaronksaunders/ionic-angularfire-sample/blob/master/Screenshot%202016-05-21%2016.37.56.png)
---
+---
 In `app.js` configure application with your firebase information
 ```Javascript
   //
